@@ -1,0 +1,35 @@
+https://jakevdp.github.io/PythonDataScienceHandbook/03.12-performance-eval-and-query.html
+
+
+
+In [52]: expr = '(df1 > 0) & (df2 > 0) & (df3 > 0) & (df4 > 0)'
+
+In [53]: x = pd.eval(expr, parser='python')
+
+In [54]: expr_no_parens = 'df1 > 0 & df2 > 0 & df3 > 0 & df4 > 0'
+
+In [55]: y = pd.eval(expr_no_parens, parser='pandas')
+
+In [56]: np.all(x == y)
+Out[56]: True
+
+
+
+The same expression can be “anded” together with the word and as well:
+
+In [57]: expr = '(df1 > 0) & (df2 > 0) & (df3 > 0) & (df4 > 0)'
+
+In [58]: x = pd.eval(expr, parser='python')
+
+In [59]: expr_with_ands = 'df1 > 0 and df2 > 0 and df3 > 0 and df4 > 0'
+
+In [60]: y = pd.eval(expr_with_ands, parser='pandas')
+
+In [61]: np.all(x == y)
+Out[61]: True
+
+
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.eval.html
+
+
+https://jakevdp.github.io/PythonDataScienceHandbook/03.12-performance-eval-and-query.html
